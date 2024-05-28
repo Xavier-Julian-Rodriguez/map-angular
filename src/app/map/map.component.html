@@ -1,0 +1,16 @@
+<div class="content">
+  <div class="left-side">
+    <app-svg></app-svg>
+  </div>
+  <div class="right-side">
+    <h1>{{ title }}</h1>
+    <h2>{{ subTitle }}</h2>
+    <p>Country: {{ data.name }}</p>
+    <p>Capital: {{ data.capitalCity }}</p>
+    <p>Region: {{ data.region?.value }}</p>
+    <p>Income Level: {{ data.incomeLevel?.value }}</p>
+    <p>Longitude: {{ data.longitude }}</p>
+    <p>Latitude: {{ data.latitude }}</p>
+  </div>
+</div>
+<router-outlet></router-outlet>
