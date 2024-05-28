@@ -1,8 +1,8 @@
-import { Component, Injectable, Input } from '@angular/core';
+import { Component, Injectable, Input, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Svg } from './svg.component';
 import { ApiService } from '../services/api.service';
-
+import { DOCUMENT } from '@angular/common';
 @Injectable({
   providedIn: 'root',
 })
@@ -23,7 +23,10 @@ export class MapComponent {
 
   private apiService: ApiService;
 
-  constructor(apiService: ApiService) {
+  constructor(
+    apiService: ApiService,
+    @Inject(DOCUMENT) private document: Document
+  ) {
     this.countryId = '';
     this.data = {};
     this.apiService = apiService;
@@ -33,7 +36,7 @@ export class MapComponent {
     this.svgPathEventListener();
   }
   async svgPathEventListener() {
-    document.querySelectorAll('path').forEach((element) => {
+    this.document.querySelectorAll('path').forEach((element) => {
       element.addEventListener('click', async (event) => {
         let id = element.getAttribute('id');
         if (id !== null) {
